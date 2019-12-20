@@ -56,17 +56,6 @@ class FlappyFishEnv(gym.Env):
         self.counter = 0
         self.state = (self.fish.velocity, self.fish.y, self.pipes.l[0].x, self.pipes.l[0].y_bottom, self.pipes.l[0].y_top)
         return np.array(self.state)
-
-    # def show(self, screen, bg, font):
-    #     screen.blit(bg, (0,0))
-    #     self.pipes.draw(screen)
-    #     self.fish.draw(screen)
-    #     text = font.render("Fish alive for {} screens".format(self.counter),
-    #                    True, (250, 250, 200), None)
-    #     text_rect = text.get_rect()
-    #     text_rect.center = (WIDTH // 2, 30)
-    #     screen.blit(text, text_rect)
-    #     pygame.display.flip()
         
         
     def render(self):
