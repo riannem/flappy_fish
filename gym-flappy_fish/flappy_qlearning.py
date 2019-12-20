@@ -14,7 +14,7 @@ class DQN:
     def __init__(self, env):
         self.env     = env
         self.memory  = deque(maxlen=10000)
-        
+
         self.gamma = 0.95
         self.epsilon = 0.95
         self.epsilon_min = 0.00001
@@ -44,7 +44,6 @@ class DQN:
         if np.random.random() < self.epsilon:
             return self.env.action_space.sample()
         prediction = self.model.predict(state.reshape(-1, len(state)))[0]
-        print(prediction)
         return np.argmax(prediction)
 
     def remember(self, state, action, reward, new_state, done):
@@ -110,7 +109,7 @@ def main():
                 dqn_agent.clear_memory()
                 break
         if tot_reward < 20000:
-            print(f"Trial: {trial}, reward: {tot_reward} in {step} steps")
+            print(f"Failed to complete in trial {trial}, reward: {tot_reward} in {step} steps")
             if tot_reward > 2000:
                 dqn_agent.save_model("trial-{}.model".format(trial))
                 print(datetime.datetime.now())
@@ -122,8 +121,3 @@ def main():
 if __name__ == "__main__":
     print(datetime.datetime.now())
     main()
-
-
-
-
-    

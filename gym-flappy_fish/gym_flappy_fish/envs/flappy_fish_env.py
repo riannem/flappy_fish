@@ -42,11 +42,13 @@ class FlappyFishEnv(gym.Env):
         off_screen = self.fish.check_off_screen()
 
         if not collision and not off_screen:
-            reward = 0
+            reward = 1
             done = False
             self.counter += 1
             if self.fish.check_through_pipe(self.pipes.l[0]):
-                reward = 1
+                reward = 10
+        else:
+            reward = -1000
 
         self.state = (self.fish.velocity, self.fish.y, self.pipes.l[0].x, self.pipes.l[0].y_bottom, self.pipes.l[0].y_top)
         return np.array(self.state), reward, done, (self.fish, self.pipes)
