@@ -90,7 +90,6 @@ def main():
     trials  = 50000
     trial_len = 10000
 
-    # updateTargetNetwork = 1000
     dqn_agent = DQN(env=env)
     steps = []
     for trial in range(trials):

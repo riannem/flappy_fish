@@ -18,6 +18,7 @@ class FlappyFishEnv(gym.Env):
 
         self.action_space = spaces.Discrete(2)
 
+        #obs: fish.velocity, fish.y, x-position pipes, bottom of gap, top of gap
         min_obs = np.array([-50,0,0,0,0], dtype=np.float32)
         max_obs = np.array([50,600,400,600,600], dtype=np.float32)
         self.observation_space = spaces.Box(min_obs, max_obs, dtype = np.float32)
