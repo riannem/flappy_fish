@@ -111,8 +111,8 @@ def main():
                 dqn_agent.clear_memory()
                 break
         if tot_reward < 20000:
-            print(f"Failed to complete in trial {trial}, reward: {tot_reward} in {step} steps")
-            if tot_reward > 200:
+            print(f"Trial: {trial}, reward: {tot_reward} in {step} steps")
+            if tot_reward > 2000:
                 dqn_agent.save_model("trial-{}.model".format(trial))
                 print(datetime.datetime.now())
         else:
